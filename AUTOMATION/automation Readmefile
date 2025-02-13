@@ -1,0 +1,57 @@
+# Selenium Automation Script
+
+## Overview
+This Selenium automation script performs the following tasks on the Kloudship QA environment:
+1. Logs into the application.
+2. Adds a package with a random dimension.
+3. Deletes the added package.
+4. Logs out and closes the browser.
+
+## Prerequisites
+Ensure you have the following installed before running the script:
+- Python 3.x
+- Google Chrome browser
+- ChromeDriver (Ensure compatibility with your Chrome version)
+- Required Python packages:
+  ```sh
+  pip install selenium
+  ```
+
+## Configuration
+- **URL**: `https://ecspro-qa.kloudship.com`
+- **Credentials**:
+  - Username: `kloudship.qa.automation@mailinator.com`
+  - Password: `Password1`
+
+## Script Breakdown
+### 1. **Login Function**
+Logs into the application using the provided credentials.
+
+### 2. **Add Package Function**
+- Navigates to the "Package Types" section.
+- Adds a package with a random dimension.
+- Logs out.
+
+### 3. **Delete Package Function**
+- Navigates to the "Package Types" section.
+- Finds and deletes the package added previously.
+- Logs out.
+
+### 4. **Execution**
+- The script first adds a package, retrieves its name, and then deletes the same package.
+- Finally, it closes the browser.
+
+## Running the Script
+Run the script using the command:
+```sh
+python script.py
+```
+Ensure that the `chromedriver` is in your system's PATH or specify its location in the script.
+
+## Notes
+- The script uses explicit `time.sleep()` calls for waiting, which can be replaced with WebDriver waits for better performance.
+- Modify the package name logic if dynamic naming conventions are required.
+- Ensure network connectivity and proper credentials before execution.
+
+Happy Automation!
+

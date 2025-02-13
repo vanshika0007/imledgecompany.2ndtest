@@ -1,0 +1,20 @@
+-- Update statements (provided in question)
+UPDATE Admissions SET attending_doctor_id = 29 WHERE attending_doctor_id = 3;
+UPDATE Admissions SET patient_id = 4 WHERE patient_id = 35;
+
+-- Query 1: Doctors who have admissions
+SELECT DISTINCT d.* 
+FROM Doctors d
+JOIN Admissions a ON d.doctor_id = a.attending_doctor_id;
+
+-- Query 2: Doctors who have no admissions
+SELECT d.* 
+FROM Doctors d
+LEFT JOIN Admissions a ON d.doctor_id = a.attending_doctor_id
+WHERE a.attending_doctor_id IS NULL;
+
+-- Query 3: Patients whose admission failed due to missing doctor details
+SELECT p.* 
+FROM Patients p
+JOIN Admissions a ON p.patient_id = a.patient_id
+WHERE a.attending_doctor_id IS NULL;

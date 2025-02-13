@@ -1,0 +1,53 @@
+                                            # Exercise 3: SQL(Readme file)
+
+## Instructions
+
+### Step 1: Open SQL Practice Tool
+1. Open the **Google Chrome** browser.
+2. Go to [SQL Practice](https://www.sql-practice.com/).
+3. Click on **SQL Database** on the left-hand side.
+4. Click on **View Schema** to understand the relationships between `patients`, `doctors`, and `admissions` tables.
+
+### Step 2: Execute Preliminary Update Queries
+Before running the **SELECT** queries, execute the following **UPDATE** statements to modify the `admissions` table:
+
+```sql
+UPDATE Admissions SET attending_doctor_id = 29 WHERE attending_doctor_id = 3;
+UPDATE Admissions SET patient_id = 4 WHERE patient_id = 35;
+```
+
+### Step 3: Execute SQL Test Queries
+
+Now, solve the following SQL problems **without using specific clauses for `attending_doctor_id` or `patient_id`** (e.g., `attending_doctor_id != 1`, `patient_id = 2`, etc.).
+
+#### Query 1: Select details of Doctors who have Admissions
+```sql
+SELECT DISTINCT d.*
+FROM Doctors d
+JOIN Admissions a ON d.doctor_id = a.attending_doctor_id;
+```
+
+#### Query 2: Select details of Doctors who have no Admissions
+```sql
+SELECT d.*
+FROM Doctors d
+LEFT JOIN Admissions a ON d.doctor_id = a.attending_doctor_id
+WHERE a.attending_doctor_id IS NULL;
+```
+
+#### Query 3: Select details of Patients whose Admission can’t be completed due to missing doctor details
+```sql
+SELECT p.*
+FROM Patients p
+JOIN Admissions a ON p.patient_id = a.patient_id
+LEFT JOIN Doctors d ON a.attending_doctor_id = d.doctor_id
+WHERE d.doctor_id IS NULL;
+```
+
+## Notes
+- Ensure that the **UPDATE** queries are executed before running the **SELECT** queries.
+- Avoid hardcoding specific values like `attending_doctor_id=3` or `patient_id=4` in the **SELECT** queries.
+- Use **JOINs** and **NULL checks** to get the required results dynamically.
+
+Happy Querying!
+

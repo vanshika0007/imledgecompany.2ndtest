@@ -1,0 +1,65 @@
+                                                 README FILE 
+
+## Overview
+This Postman collection contains API requests for verifying shipment details and addresses using the EasyPost API. The collection includes test scripts to validate API responses.
+
+## Collection Information
+- **Postman ID:** 9953a316-91b0-4149-8715-d6c78fe87a95
+- **Name:** Impledge_QA_VANSHIKA KANSAL
+- **Schema Version:** v2.1.0
+- **Exporter ID:** 42233723
+
+## API Endpoints
+
+### 1. Get Shipment Details
+**Method:** GET  
+**URL:** `https://api.easypost.com/v2/shipments/shp_e0b570fd1d7d4b62bd206917eae5881a`  
+**Description:** Fetches details of a specific shipment.
+
+**Tests:**
+- Verify that `selected_rate.retail_rate` is equal to `12.00`.
+- Ensure `retail_rate` is greater than `list_rate`.
+
+### 2. Address Verification
+**Method:** POST  
+**URL:** `https://api.easypost.com/v2/addresses?verify_strict[]=delivery`  
+**Description:** Verifies the provided address for delivery accuracy.
+
+**Request Body (JSON):**
+```json
+{
+    "company": "Residence Inn",
+    "street1": "22 Segar St",
+    "street2": "",
+    "city": "Danbury",
+    "country": "US",
+    "phone": "855-782-3877",
+    "zip": "06810",
+    "email": "shipper@mailinator.com"
+}
+```
+
+**Tests:**
+- Ensure response body contains no errors.
+- Verify that the ZIP code `06810` is present in the response.
+
+## Authentication
+- **Type:** Basic Authentication
+- **Username:** `EZTK0126bfcd0c834208b2289e3c501630d7IMAAxVrGZ2G1UXCmomm4Pw`
+
+## Setup Instructions
+1. Import this collection into Postman.
+2. Ensure the EasyPost API key is correctly set in the authentication.
+3. Run requests and verify test results.
+
+## Notes
+- The `Authorization` header in the Address Verification request is currently disabled.
+- Adjust request parameters as needed for different test cases.
+
+## Dependencies
+- Postman v9+ (Recommended)
+- Active EasyPost API credentials
+
+## License
+This collection is intended for QA and testing purposes only.
+
